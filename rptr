@@ -1,0 +1,10 @@
+#!/usr/bin/perl
+
+unless(defined($ARGV[0])) {exit;}
+$branch = $ARGV[0];
+$current = `cat /home/htdocs/rdbu.html`;
+if ($current =~ /$branch/g)  {exit;}
+$date = `date +%m/%d%t%I:%M%p`;
+chomp($date);
+open(HTML,">>/home/htdocs/rdbu.html");
+print HTML "<br> $date&nbsp;&nbsp;     $branch\n";
